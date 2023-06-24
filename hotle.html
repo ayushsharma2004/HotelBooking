@@ -1,0 +1,106 @@
+<html>
+  <head>
+    <title>Event Click LatLng</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="./search.css" />
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <script src="https://kit.fontawesome.com/efea4df832.js" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div class="back" id="back"></div>
+    <nav id="navbar">
+      <div class="logo">Hotel.com</div>
+      <input type="checkbox" id="click">
+      <label for="click" class="menu-btn">
+        <i class="fas fa-bars"></i>
+      </label>
+      <ul>
+        <i class="fa-sharp fa-regular fa-paper-plane"></i>
+        <li><a href="#">HOME</a></li>
+        <li><a href="#">ABOUT</a></li>
+        <li><a href="#">CONTACT</a></li>
+        <li><a href="#">SIGNUP</a></li>
+        <li><a href="#">LOGIN</a></li>
+      </ul>
+    </nav>
+    <div class="container" id="container">
+        <div class="srchbox">
+          <input type="text" placeholder="Search..." class="srch_input" id="srch-inp">
+          <div class="datetext1">Checkin Date</div>
+          <input type="date" id="checkin">
+          <div class="datetext2">Checkout Date</div>
+          <input type="date" id="checkout">
+          <button onclick="srchloc()" class="srchbtn" id="srchbtn"><i class="fa-solid fa-magnifying-glass" style="color: #fff;"></i></button>
+          <button type="button" class="map-btn" id="mapbtn" onclick="map_display()"><i class="fa-solid fa-map" style="color: #fff;"></i></button>
+        </div>
+        <div id="map"></div>
+        <div class="slider" id="slider">
+          <div class="slides">
+            <!--radio buttons start-->
+            <input type="radio" name="radio-btn" id="radio1">
+            <input type="radio" name="radio-btn" id="radio2">
+            <input type="radio" name="radio-btn" id="radio3">
+            <input type="radio" name="radio-btn" id="radio4">
+            <!--radio buttons end-->
+            <!--slide images start-->
+            <div class="slide first">
+              <img src="img/hdimg.jpg" alt="">
+            </div>
+            <div class="slide">
+              <img src="img/hdimg33.jpg" alt="">
+            </div>
+            <div class="slide">
+              <img src="img/hdimg22.jpg" alt="">
+            </div>
+            <div class="slide">
+              <img src="img/hdimg4.jpg" alt="">
+            </div>
+            <!--slide images end-->
+            <!--automatic navigation start-->
+            <div class="navigation-auto">
+              <div class="auto-btn1"></div>
+              <div class="auto-btn2"></div>
+              <div class="auto-btn3"></div>
+              <div class="auto-btn4"></div>
+            </div>
+            <!--automatic navigation end-->
+          </div>
+          <!--manual navigation start-->
+          <div class="navigation-manual">
+            <label for="radio1" class="manual-btn"></label>
+            <label for="radio2" class="manual-btn"></label>
+            <label for="radio3" class="manual-btn"></label>
+            <label for="radio4" class="manual-btn"></label>
+          </div>
+          <!--manual navigation end-->
+        </div>
+        <!--image slider end-->
+    </div>
+
+      <script type="text/javascript">
+        var counter = 1;
+        setInterval(function(){
+          document.getElementById('radio' + counter).checked = true;
+          counter++;
+          if(counter > 4){
+            counter = 1;
+          }
+        }, 3000);
+        </script>
+    <!-- 
+      The `defer` attribute causes the callback to execute after the full HTML
+      document has been parsed. For non-blocking uses, avoiding race conditions,
+      and consistent behavior across browsers, consider loading using Promises.
+      See https://developers.google.com/maps/documentation/javascript/load-maps-js-api
+      for more information.
+      -->
+    <script src="map.js"></script>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCVx-cA9Czw0KTwq8p8S7xzTcNjO1fPorQ&callback=initMap&v=weekly"
+      defer
+    ></script>
+  </body>
+</html>
